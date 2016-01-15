@@ -40,7 +40,12 @@ var file_cache = {};
 function read_file(file, start, end) {
   if (!(file in file_cache)) {
     var realFile = new Promise(function (resolve, reject) {
-      fs.readFile("data/" + file, function (err, data) {
+      var fileURI = "data/" + file
+      if (typeof __filename !== 'undefined') {
+        fileURI = __filename + '/../data/' + file
+      }
+
+      fs.readFile(fileURI, function (err, data) {
         if (err) reject(err);
         else resolve(data);
       });
