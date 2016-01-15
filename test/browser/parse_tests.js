@@ -3,7 +3,7 @@ function loadTestData(callback) {
   var xhrreq = new XMLHttpRequest();
   xhrreq.onreadystatechange = function () {
     if (xhrreq.readyState == 4) {
-      var lines = xhrreq.responseText.split("\n").filter(function (line) {
+      var lines = xhrreq.responseText.split("\r\n").filter(function (line) {
         return line[0] == '[' && line != "[DEFAULT]";
       }).map(function (line) {
         return line.slice(1, -1);
