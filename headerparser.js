@@ -1,4 +1,3 @@
-define(function(require) {
 /**
  * This file implements the structured decoding of message header fields. It is
  * part of the same system as found in mimemimeutils.js, and occasionally makes
@@ -8,6 +7,7 @@ define(function(require) {
 
 "use strict";
 var mimeutils = require('./mimeutils');
+const { TextDecoder } = require('./encodings');
 
 /**
  * This is the API that we ultimately return.
@@ -1151,7 +1151,4 @@ headerparser.parseAddressingHeader = parseAddressingHeader;
 headerparser.parseDateHeader = parseDateHeader;
 headerparser.parseParameterHeader = parseParameterHeader;
 headerparser.parseStructuredHeader = parseStructuredHeader;
-return Object.freeze(headerparser);
-
-});
-
+module.exports = Object.freeze(headerparser);

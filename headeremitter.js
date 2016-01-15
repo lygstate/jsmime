@@ -1,4 +1,3 @@
-define(function(require) {
 /**
  * This module implements the code for emitting structured representations of
  * MIME headers into their encoded forms. The code here is a companion to,
@@ -10,6 +9,7 @@ define(function(require) {
 "use strict";
 
 var mimeutils = require('./mimeutils');
+const { TextEncoder } = require('./encodings');
 
 // Get the default structured encoders and add them to the map
 var structuredHeaders = require('./structuredHeaders');
@@ -768,12 +768,9 @@ function addStructuredEncoder(header, encoder) {
     preferredSpellings.set(lowerName, header);
 }
 
-return Object.freeze({
+module.exports = Object.freeze({
   addStructuredEncoder: addStructuredEncoder,
   emitStructuredHeader: emitStructuredHeader,
   emitStructuredHeaders: emitStructuredHeaders,
   makeStreamingEmitter: makeStreamingEmitter
 });
-
-});
-
